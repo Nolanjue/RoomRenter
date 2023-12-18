@@ -1,1 +1,1 @@
-Project built with SQL, react and express
+Project built with SQL, react and Express. Includes cookies and JWT for authentication.
