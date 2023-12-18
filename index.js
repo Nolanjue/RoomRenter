@@ -27,7 +27,7 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 const cookieOptions = {
     httpOnly:false,//false?
     path: '/',
-    secure: false, 
+    secure: true, //set to true only in production, as now cookies can be served in https requests
     domain:process.env.DOMAIN,
     //sameSite: 'None',//None?
 }
