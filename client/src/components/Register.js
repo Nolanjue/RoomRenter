@@ -48,6 +48,7 @@ function Register({ opener }) {
             console.log(createUser)
             handleClose()
             dispatch(updateMyState())
+            window.location.reload()
 
             
             

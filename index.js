@@ -27,9 +27,9 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 const cookieOptions = {
     httpOnly:false,//false?
     path: '/',
-    secure: true, 
+    secure: false, 
     domain:process.env.DOMAIN,
-    sameSite: 'None',//None?
+    //sameSite: 'None',//None?
 }
 
 
@@ -479,6 +479,7 @@ app.post('/addFriend', async (req, res) => {
         }
     }
     catch (error) {
+        console.log(error)
         return res.status(400).json(error)
     }
 
@@ -494,7 +495,7 @@ app.get('/getRequests', async (req, res) => {
     try {
         const getToken = req.cookies.token;
         if (!getToken) {
-            return res.status(400).json('user is not authenticated');
+            return res.json({ isAuthenticated: false });
         }
 
         else {
@@ -510,6 +511,7 @@ app.get('/getRequests', async (req, res) => {
         }
     }
     catch (error) {
+        console.log(error)
         return res.status(400).json(error)
     }
 })

@@ -45,6 +45,7 @@ function Login() {
     
    
     const axiosCredentials = { withCredentials: true, credentials: 'include' }
+    
     const Check = async () => {
         try {//check for token expiration date..
             const sendData = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, user, axiosCredentials)//put user token in cookies, we should get the data here..
@@ -54,6 +55,7 @@ function Login() {
             console.log(sendData)
             dispatch(updateMyState())//calls the redux addition state, should call the useEffect in navbar
             handleClose()
+            window.location.reload();
         }
         catch (error) {
             console.log(error)
