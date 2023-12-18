@@ -1,0 +1,123 @@
+.add-content{
+    display:flex;
+    margin-top:100px;
+    display:flex;
+    background-color:white;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:80%;
+    
+}
+
+
+.add-content > h1{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:black;
+}
+h3{
+    font-weight:bold;
+    font-size:15px;
+}
+.create-room{
+    width:90%;
+    background-color:red;
+    border:1px solid black;
+    border-radius:10px;
+    font-size:15px;
+    
+}
+.room-input{
+    height:20%;
+    width:50%;
+    border-radius:3px;
+    border:1px solid black;
+}
+
+
+form{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+   
+}
+.item{
+    padding-left:3%;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+@media(max-width:900px){
+    .description{
+        width:50%;
+        
+    }
+}
+.description{
+    width:70%;
+    font-size:15px;
+    height:150px;
+    padding-right:5%;
+}
+
+
+.image-container{
+    display:flex;
+    
+    justify-content:center;
+    
+}
+@media(max-width:800px){
+    .image-container{
+        display:flex;
+        flex-direction:column;
+        padding-left:10%;
+    }
+}
+#file-input{
+    display:flex;
+    padding:5px 10px;
+    font-size:10px;
+   
+}
+.date-holder{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+#date{
+    width:50%;
+}
+
+.button-holder{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    
+}
+.cancel-button{
+    padding:5px 15px;
+    cursor:pointer;
+    color:white;
+    background-color: darkred !important;/*override default modal */
+    border:2px solid black;
+    border-radius:5px;
+    width:30%;
+}
+.create-button{
+    cursor:pointer;
+    color:white;
+    background-color: red !important;/*override default modal */
+    border:2px solid black;
+    border-radius:5px;
+    width:40%;
+}
+.create-button:hover{
+    background-color: red !important;
+}
+

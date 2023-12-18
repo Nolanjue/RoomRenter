@@ -1,0 +1,105 @@
+.friend-container{
+    height:100vh;
+    width:100%;
+    display:flex;
+    border-radius:10px;
+    flex-direction:column;
+    align-items:center;
+    
+    border:3px solid black;
+
+}
+.friend-header {
+    display:flex;
+    margin-top:100px;
+    border-bottom:1px solid black;
+    
+}
+.friend-header > h1{
+    color:white;
+
+}
+.profiler-link{
+    padding:5px 15px;
+    background-color:yellow;
+    color:black;
+    font-weight:bold;
+    
+}
+.friend-content{
+    width:100%;
+    padding-top:20px;
+    background-color:dimgrey;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+  
+    
+}
+.friend-content > h1{
+    color:black;
+    text-decoration:underline;
+    
+}
+
+.friend{
+    width:90%;
+    display:flex;
+    gap:30px;
+    padding-bottom:5px;
+    border:3px groove black;
+    border-radius:10px;
+    background-color:white;
+    justify-content:space-between;
+    align-items:center;
+    padding-left:10%;
+   
+}
+.friend > h1{
+    font-size:15px;
+    color:black;
+    padding-top:1%;
+}
+@media(max-width:1000px){
+    .friend >h1{
+        display:none;
+    }
+}
+@media(max-width:700px){
+    .friend{
+        width:100%;
+        padding:20px;
+        padding-left:0px;
+    }
+}
+
+.button-holder{
+    padding-top:0.5%;
+   
+}
+.accept{
+    padding:5px 15px;
+    cursor:pointer;
+    color:white;
+    background-color:lightgreen;
+    border:2px solid black;
+    border-radius:5px;
+}
+.accept:hover{
+    background-color:yellow;
+}
+
+.decline{
+    padding:5px 15px;
+    cursor:pointer;
+    color:white;
+    background-color: darkred ;/*override default modal */
+    border:2px solid black;
+    border-radius:5px;
+   
+}
+.decline:hover{
+    background-color:yellow;
+}
