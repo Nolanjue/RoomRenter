@@ -357,7 +357,7 @@ app.get('/usersPosts', async (req, res) => {
 
 //maybe got to add multer again here...
 app.post('/changePic', upload.fields([{ name: 'picture', maxCount: 1 }]), async (req, res) => {
-
+    //DONT FORGET! COOKIES CANT STORE THIS SIZE, PUT IT IN DATABASE, just DONT PUT IT IN THE USERS
     const getToken = req.cookies.token;
     if (!getToken) {
         return res.json('404-user is not signed in')
@@ -371,7 +371,7 @@ app.post('/changePic', upload.fields([{ name: 'picture', maxCount: 1 }]), async 
         await db.query(
             `UPDATE users 
         SET profile_pic = ? 
-        WHERE id = ?;`, [images['picture'][0].buffer.toString('base64'), id]);
+        WHERE id = ?;`, [null/*images['picture'][0].buffer.toString('base64')*/, id]);
 
         return res.status(200).json('picture successfully changed')
     }
