@@ -29,13 +29,12 @@ const cookieOptions = {
     path: '/',
     secure: true, //set to true only in production, as now cookies can be only be served in https requests and not http requests
     //secure: false, means to allow both http requests and https api requests
-    domain:process.env.DOMAIN,
+    domain:process.env.DOMAIN,//domain that needs to gets access to this cookie(like req.cookies)
     sameSite: 'None',//None?
 }
 
 
-const secretKey = process.env.KEY
-
+const secretKey = process.env.KEY;
 
 
 
@@ -247,7 +246,7 @@ app.get('/logout', (req, res) => {
 })
 
 
-
+/*
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -257,12 +256,13 @@ const storage = multer.diskStorage({
       cb(null, Date.now() + file.originalname)//creates a unique file name
     }
   })
+*/
 
-//const upload = multer({ storage: multer.memoryStorage() });//memory storage stores the objects as buffer that contains the image
-const upload = multer({ storage: storage})
+const upload = multer({ storage: multer.memoryStorage() });//memory storage stores the objects as buffer that contains the image
 
 
 
+/*
 const profilePicStorage = multer.diskStorage({//for profile Pictures
     destination: function (req, file, cb) {
       cb(null, "./client/public/profileImages")//where we store the images
@@ -273,7 +273,7 @@ const profilePicStorage = multer.diskStorage({//for profile Pictures
   })
 
 const profileUpload = multer({storage: profilePicStorage})
-
+*/
 
 app.post('/addRoom', upload.fields([
     { name: 'frontimage', maxCount: 1 },
@@ -301,6 +301,7 @@ app.post('/addRoom', upload.fields([
         // Access the uploaded file data
 
         const images = req.files;
+
         console.log(images['frontimage'][0].filename)
         console.log(images['frontimage'])
         if (!images) {
@@ -314,7 +315,7 @@ app.post('/addRoom', upload.fields([
         await db.query(`
             INSERT INTO rooms (name, maxCount, phonenumber, rentPerDay, image, description, userId, total_likes, start_datetime, end_datetime, image2, image3, address, owner)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-        `, [name, maxCount, phonenumber, rentPerDay, images['frontimage'][0].filename, description, userId, total_likes, formattedStartDate, formattedEndDate, images['slideimage1'][0].filename, images['slideimage2'][0].filename, address, owner]);
+        `, [name, maxCount, phonenumber, rentPerDay, images['frontimage'][0].buffer.toString('base64'), description, userId, total_likes, formattedStartDate, formattedEndDate, images['slideimage1'][0].buffer.toString('base64'), images['slideimage2'][0].buffer.toString('base64'), address, owner]);
         //[name, maxCount, phonenumber, rentPerDay, images['frontimage'][0].buffer.toString('base64'), description, userId, total_likes, formattedStartDate, formattedEndDate, images['slideimage1'][0].buffer.toString('base64'), images['slideimage2'][0].buffer.toString('base64'), address, owner]);
 
 
@@ -359,15 +360,12 @@ app.post('/changePic', profileUpload.fields([{ name: 'picture', maxCount: 1 }]),
     try {
         const images = req.files;//for picture
 
-        console.log(images['picture'][0].filename)
-
         const { id } = req.body;
         console.log(id)
-
         await db.query(
             `UPDATE users 
         SET profile_pic = ? 
-        WHERE id = ?;`, [images['picture'][0].filename, id]);
+        WHERE id = ?;`, [images['picture'][0].buffer.toString('base64'), id]);
 
         return res.status(200).json('picture successfully changed')
     }

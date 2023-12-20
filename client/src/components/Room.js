@@ -101,7 +101,7 @@ function Room({ rooms, permissions, roomId }) {//function Room({rooms, userId})/
     return (
         <div className='row'>
             <div className='column-1'>
-                <img alt='embedded image' src={`./upload/${rooms.image}`} className='front-image' />
+                <img alt='embedded image' src={`data:image/png;base64,${rooms.image}`} className='front-image' />
                 {auth && <div className='options'>
                     <NavDropdown title='...' menuVariant="dark">
                         <NavDropdown.Item onClick={(e) => Check(e)}>Delete your Room</NavDropdown.Item>
@@ -127,21 +127,21 @@ function Room({ rooms, permissions, roomId }) {//function Room({rooms, userId})/
                         <Carousel.Item>
                             <img
                                 className="slide-image"
-                                src={`../upload/${rooms.image}`}
+                                src={`data:image/png;base64,${rooms.image}`}
                                 alt="First slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="slide-image"
-                                src={`../upload/${rooms.image2}`}
+                                src={`data:image/png;base64,${rooms.image2}`}
                                 alt="Second slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="slide-image"
-                                src={`../upload/${rooms.image3}`}
+                                src={`data:image/png;base64,${rooms.image3}`}
                                 alt="Third slide"
                             />
                         </Carousel.Item>

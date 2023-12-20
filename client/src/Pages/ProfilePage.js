@@ -187,7 +187,7 @@ function ProfilePage() {
                         <span>{user.email}</span>
                     </div>
                     <div className='profile-image-holder'>
-                        <img className='profile-image' name='picture' src={`./profileImages/${user.profile_pic} `}/>
+                        <img className='profile-image' name='picture' src={`data:image/png;base64,${user.profile_pic} `}/>
 
                         <button className='picture-button' onClick={(e) => Clicker(e)}>+</button>
                         {change && <button className='change-button' onClick={(e) => { changeProfilePic(e) }}>Change Profile Picture?</button>}
