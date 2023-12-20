@@ -91,7 +91,6 @@ function Add() {//the link to Add will also be calling the updateState as well t
     const handleSubmit = async (e) => {
         e.preventDefault();
         Check()
-        alert('Images currently will not load, I will fix this soon!')
         // Convert date and time to ISO format
         const formattedStartDate = formData.start_datetime
             ? new Date(formData.start_datetime).toISOString()

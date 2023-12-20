@@ -68,7 +68,7 @@ function Book() {
                             </div>
                             
                             <div className='image-holder'>
-                                <img className='image' src={`./upload/${room.yourData.image}`} />
+                                <img className='image' src={`data:image/png;base64,${room.yourData.image}`} />
                             </div> 
                             <div className = 'button-holder'>
                                 <button className='getout' onClick={(e) => goToHome(e)}>

@@ -14,7 +14,7 @@ const multer = require('multer');
 
 
 const app = express();
-app.use(cors({ origin: true, credentials:true}))
+app.use(cors({ origin: 'https://roomrenter.netlify.app', credentials:true}))
 app.use(cookieParser());//to get the cookies from request.
 app.use(express.json())
 
@@ -236,7 +236,8 @@ app.get('/checkUser', async (req, res) => {//be careful of infinite loops with r
         //very important: check if JWT is expired, if expired, clear the token if not already cleared
         //for if it dosent automatically log out
         if (err.name === 'TokenExpiredError'){
-            res.clearCookie('token', cookieOptions)
+            res.clearCookie('token', cookieOptions);
+            return res.json({ isAuthenticated: false })
         }
         return res.status(400).json(err);
     }
