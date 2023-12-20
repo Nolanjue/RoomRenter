@@ -23,21 +23,8 @@ const configurations= {
 
 console.log(configurations)
 
-const db = mysql.createConnection(configurations).promise();
+const db = mysql.createPool(configurations).promise();
 
-db.connect(
-  function (err) { 
-  if (err) { 
-      console.log("!!! Cannot connect !!! Error:");
-      throw err;
-  }
-  else
-  {
-     console.log("Connection established.");
-     const value = db.query('SELECT * FROM users');
-    console.log(value)
-  }
-});
 
 
 module.exports = db;
