@@ -350,7 +350,7 @@ app.get('/usersPosts', async (req, res) => {
 
 
 //maybe got to add multer again here...
-app.post('/changePic', profileUpload.fields([{ name: 'picture', maxCount: 1 }]), async (req, res) => {
+app.post('/changePic', upload.fields([{ name: 'picture', maxCount: 1 }]), async (req, res) => {
 
     const getToken = req.cookies.token;
     if (!getToken) {
