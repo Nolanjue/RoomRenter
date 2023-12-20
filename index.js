@@ -233,6 +233,11 @@ app.get('/checkUser', async (req, res) => {//be careful of infinite loops with r
 
     }
     catch (err) {
+        //very important: check if JWT is expired, if expired, clear the token if not already cleared
+        
+        if (err.response.data.name === 'TokenExpiredError'){
+            res.clearCookie('token', cookieOptions)
+        }
         return res.status(400).json(err);
     }
 })
